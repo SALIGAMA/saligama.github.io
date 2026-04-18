@@ -1,0 +1,488 @@
+:root {
+  --bg: #f6efe5;
+  --paper: rgba(255, 250, 243, 0.88);
+  --ink: #1f1c19;
+  --muted: #665d57;
+  --accent: #cf5d2e;
+  --accent-soft: #f1c6a7;
+  --line: rgba(31, 28, 25, 0.12);
+  --shadow: 0 24px 70px rgba(82, 52, 34, 0.14);
+  --radius-lg: 32px;
+  --radius-md: 20px;
+  --radius-sm: 999px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(207, 93, 46, 0.18), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(61, 130, 109, 0.14), transparent 24%),
+    linear-gradient(135deg, #fff7ee 0%, #f5eadf 45%, #efe3d8 100%);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1rem auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 40px;
+  background: rgba(255, 248, 240, 0.48);
+  backdrop-filter: blur(20px);
+}
+
+.hero,
+.section,
+.profile-card,
+.project-card,
+.timeline-item {
+  animation: rise 700ms ease forwards;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0 2rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff8f1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.95fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.hero-copy,
+.profile-card,
+.intro-panel,
+.project-card,
+.timeline-item,
+.contact-panel {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 4rem);
+  border-radius: var(--radius-lg);
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: auto -8% -14% auto;
+  width: 240px;
+  height: 240px;
+  border-radius: 46% 54% 56% 44%;
+  background: linear-gradient(145deg, rgba(207, 93, 46, 0.15), rgba(95, 161, 140, 0.18));
+  filter: blur(4px);
+}
+
+.eyebrow,
+.section-tag,
+.project-type {
+  margin: 0 0 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.77rem;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  line-height: 0.96;
+}
+
+h1 {
+  max-width: 9ch;
+  font-size: clamp(3.25rem, 7vw, 6.2rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+h3 {
+  font-size: 1.45rem;
+}
+
+.lede,
+.timeline-content p,
+.project-card p,
+.contact-grid a,
+.profile-note,
+.profile-role,
+.intro-panel p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.lede {
+  max-width: 58ch;
+  margin: 1.4rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--ink);
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-solid {
+  background: var(--ink);
+  color: #fff7ef;
+}
+
+.button-ghost {
+  background: transparent;
+}
+
+.profile-card {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.portrait {
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: 28px;
+  background:
+    linear-gradient(150deg, rgba(31, 28, 25, 0.96), rgba(207, 93, 46, 0.94)),
+    linear-gradient(0deg, #000, #000);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.profile-meta {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.profile-role,
+.profile-note {
+  margin: 0;
+}
+
+.profile-stats {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.profile-stats div {
+  padding: 0.9rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.profile-stats dt {
+  margin-bottom: 0.2rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2rem;
+}
+
+.profile-stats dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.section {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+}
+
+.intro-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.intro-panel article {
+  padding: 0.5rem;
+}
+
+.intro-panel h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.chip-list li {
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  max-width: 12ch;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+}
+
+.timeline-meta {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.timeline-content {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.timeline-content p,
+.project-card p {
+  margin: 0;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.project-card {
+  display: grid;
+  gap: 0.8rem;
+  min-height: 260px;
+  padding: 1.4rem;
+  border-radius: var(--radius-md);
+}
+
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-panel::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  bottom: -70px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(207, 93, 46, 0.2), transparent 68%);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.contact-grid a {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.contact-grid a:hover,
+.contact-grid a:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(207, 93, 46, 0.45);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .intro-panel,
+  .project-grid,
+  .contact-grid,
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading h2,
+  h1 {
+    max-width: none;
+  }
+
+  .timeline-meta {
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1rem, 100%);
+    margin: 0.5rem auto;
+    padding: 0.85rem;
+    border-radius: 26px;
+  }
+
+  .topbar {
+    padding-bottom: 1.2rem;
+  }
+
+  .nav-links {
+    gap: 0.7rem;
+    font-size: 0.92rem;
+  }
+
+  .hero-copy,
+  .profile-card,
+  .section {
+    border-radius: 24px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button,
+  .contact-grid a {
+    width: 100%;
+  }
+}
